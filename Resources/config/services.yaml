@@ -1,0 +1,20 @@
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $credentials: '%cleverage_colissimo.auth%'
+            $sender: '%cleverage_colissimo.letter.sender%'
+            $service: '%cleverage_colissimo.letter.service%'
+
+    CleverAge\ColissimoBundle\:
+        resource: '../../'
+        exclude:
+            - '../../DependencyInjection/'
+            - '../../Resources/'
+            - '../../Tests/'
+
+    CleverAge\ColissimoBundle\Client\ColissimoClient:
+        arguments:
+            $testModeEnabled: '%cleverage_colissimo.testModeEnabled%'
+
