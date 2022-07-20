@@ -3,6 +3,9 @@
     "description": "Simple colissimo REST bundle for Symfony",
     "keywords": [
         "colissimo",
+        "colissimo-webservices",
+        "symfony-colissimo",
+        "colissimo-bundle",
         "rest"
     ],
     "homepage": "https://github.com/cleverage/ColissimoBundle",

@@ -10,6 +10,11 @@ This bundle provides services to access and consume the Colissimo WS.
 - [Pickup points](https://www.colissimo.entreprise.laposte.fr/sites/default/files/2021-10/WebService-points-retrait_FR.pdf)
 - [Tracking](https://www.colissimo.entreprise.laposte.fr/sites/default/files/2021-08/CDC_WebServiceTrackingTL-v2.1_FR.pdf)
 
+### Requirements
+
+- Php >= 7.4
+- Symfony 4, 5
+
 ## Installation
 
 ### Pretty simple with [Composer](http://packagist.org), run
@@ -79,6 +84,7 @@ class PickupPointsController extends AbstractController
         foreach ($pickupPoints as $pickupPoint) {
             // Get data by identifier.
             // @see PickupPoint to show all identifiers available.
+            echo $pickupPoint->get('id'); // 987178
             echo $pickupPoint->get('name'); // ALEX TISSUS
         }
         
@@ -194,6 +200,8 @@ class ShippingController extends AbstractController
             ->setZipCode('33300');
 
         $letter->setAddressee($addressee);
+
+        $label->setLetter($letter);
 
         $shipping = $this->shippingService->call($label);
 
