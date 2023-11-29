@@ -70,9 +70,13 @@ class ParcelResponse extends BaseResponseModel
         return $this->removalPoint;
     }
 
-    public function setRemovalPoint(array $removalPoint): ParcelResponse
+    public function setRemovalPoint(?array $removalPoint): ParcelResponse
     {
-        $this->removalPoint = (new RemovalPoint())->populate($removalPoint);
+        if (null !== $removalPoint) {
+            $rp = (new RemovalPoint())->populate($removalPoint);
+        }
+
+        $this->removalPoint = $rp ?? null;
 
         return $this;
     }
