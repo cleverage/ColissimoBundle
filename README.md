@@ -4,7 +4,7 @@
 
 This bundle provides services to access and consume the Colissimo WS.
 
-### Services 
+### Services
 
 - [Shipping](https://www.colissimo.entreprise.laposte.fr/sites/default/files/2022-04/DT_Flexibilite_Expedition_Web_Service_Affranchissement_202204_FR.pdf)
 - [Pickup points](https://www.colissimo.entreprise.laposte.fr/sites/default/files/2021-10/WebService-points-retrait_FR.pdf)
@@ -13,7 +13,7 @@ This bundle provides services to access and consume the Colissimo WS.
 ### Requirements
 
 - Php >= 7.4
-- Symfony 4, 5
+- Symfony 4, 5 or 6
 
 ## Installation
 
@@ -72,7 +72,7 @@ class PickupPointsController extends AbstractController
     public function index()
     {
         $searchModel = new PickupPointsSearchModel(
-            '33300', 
+            '33300',
             'Bordeaux',
             'FR',
             '18/07/2022',
@@ -87,7 +87,7 @@ class PickupPointsController extends AbstractController
             echo $pickupPoint->get('id'); // 987178
             echo $pickupPoint->get('name'); // ALEX TISSUS
         }
-        
+
         // ....
     }
 }
@@ -114,7 +114,7 @@ class PickupPointByIdController extends AbstractController
         if (null !== $pickupPoint) {
             echo $pickupPoint->get('name'); // ALEX TISSUS
         }
-        
+
         // ....
     }
 }
@@ -168,7 +168,7 @@ class ShippingController extends AbstractController
     public function index()
     {
         $label = new Label();
-        
+
         $outputFormat = new OutputFormat();
         $outputFormat->setOutputPrintingType(OutputPrintingType::ZPL_10x10_300dpi);
 
@@ -209,7 +209,7 @@ class ShippingController extends AbstractController
         echo $shipping->getPdfUrl(); // null or the pdf url.
         echo $shipping->getParcelNumberPartner(); // null or the parcel number partner.
         echo $shipping->getFields(); // Array of custom fields.
-        
+
         // ...
     }
 }
@@ -242,7 +242,7 @@ class ProductInterController extends AbstractController
 
         $response->getProduct(); // Array of product codes.
         $response->getReturnTypeChoice(); // Array of return choice types.
-        
+
         // ...
     }
 }
