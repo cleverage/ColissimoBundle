@@ -112,7 +112,7 @@ class Service
         }
 
         $service['orderNumber'] = $this->getOrderNumber();
-        $service['commercialNumber'] = $this->getCommercialName();
+        $service['commercialName'] = $this->getCommercialName();
 
         if ($returnTypeChoice = $this->getReturnTypeChoice()) {
             $service['returnTypeChoice'] = $returnTypeChoice;
