@@ -31,6 +31,9 @@ class ProductCode extends BaseEnum
     const CDI  = 'CDI';
     const BOS  = 'BOS';
     const BOM  = 'BOM';
+    
+    // Hors domicile (Fr & International)
+    const HD  = 'HD';
 
     public const ALL = [
         '6A'  => self::DOM,
@@ -55,5 +58,10 @@ class ProductCode extends BaseEnum
         'CA'  => self::DOM,
         'CB'  => self::DOS,
         'BDP' => 'CI',
+        '6M' => self::HD,
+        '9M' => self::HD,
+        'CM' => self::HD,
+        'CG' => self::HD,
+        'CI' => self::HD
     ];
 }
