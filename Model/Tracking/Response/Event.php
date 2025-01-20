@@ -71,4 +71,15 @@ class Event extends BaseResponseModel
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'date' => $this->getDate(),
+            'code' => $this->getCode(),
+            'labelLong' => $this->getLabelLong(),
+            'siteName' => $this->getSiteName(),
+            'siteZipCode' => $this->getSiteZipCode(),
+        ];
+    }
 }

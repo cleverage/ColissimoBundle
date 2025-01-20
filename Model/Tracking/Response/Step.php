@@ -99,4 +99,16 @@ class Step extends BaseResponseModel
 
         return $this;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getStepId(),
+            'stepLabel' => $this->getStepLabel(),
+            'longLabel' => $this->getLongLabel(),
+            'status' => $this->getStatus(),
+            'country' => $this->getCountry(),
+            'date' => $this->getDate(),
+        ];
+    }
 }

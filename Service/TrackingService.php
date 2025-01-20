@@ -41,6 +41,9 @@ class TrackingService extends AbstractService
         }
     }
 
+    /**
+     * @throws TrackingRequestException
+     */
     public function parseResponse($response): TrackingResponse
     {
         $responses = $this->slsResponseParser->parse($response);
@@ -48,7 +51,7 @@ class TrackingService extends AbstractService
         $body = $responses[0]['body'];
         $status = $body['status'][0];
         if ($status['code'] !== "0") {
-            throw new TrackingRequestException($status['message']);
+            throw new TrackingRequestException($status['message'], $status['code']);
         }
 
         $parcel = $body['parcel'];
