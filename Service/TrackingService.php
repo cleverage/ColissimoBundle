@@ -51,7 +51,7 @@ class TrackingService extends AbstractService
         $body = $responses[0]['body'];
         $status = $body['status'][0];
         if ($status['code'] !== "0") {
-            throw new TrackingRequestException($status['message'], $status['code']);
+            throw new TrackingRequestException($status['message'], $status['code'] ?? 0);
         }
 
         $parcel = $body['parcel'];
