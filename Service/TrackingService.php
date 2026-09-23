@@ -20,9 +20,13 @@ class TrackingService extends AbstractService
         TrackingSearchModel $trackingSearchModel,
         array $customCredentials = []
     ): TrackingResponse {
-        $credentials = [] !== $customCredentials
-            ? ['login' => $customCredentials['contractNumber'], 'password' => $customCredentials['password']]
-            : ['login' => $this->credentials['contractNumber'], 'password' => $this->credentials['password']];
+        if (isset($customCredentials['apiKey'])) {
+            $credentials = ['apiKey' => $customCredentials['apiKey']];
+        } else {
+            $credentials = [] !== $customCredentials
+                ? ['login' => $customCredentials['contractNumber'], 'password' => $customCredentials['password']]
+                : ['login' => $this->credentials['contractNumber'], 'password' => $this->credentials['password']];
+        }
 
         return $this->doCall(Request::METHOD_POST, self::URL, [
             'parcelNumber' => $trackingSearchModel->getParcelNumber(),
